@@ -170,7 +170,7 @@ DEPENDENCIES
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
   factory_girl_rails (= 1.4.0)
-  jquery-rails (= 2.0.0)
+  jquery-rails
   pg (= 0.12.2)
   rails (= 3.2.6)
   rb-readline
