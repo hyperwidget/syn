@@ -1,4 +1,10 @@
 Syn::Application.routes.draw do
+  get "main_pages/home"
+
+  get "main_pages/help"
+
+  get "main_pages/about"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
