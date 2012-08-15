@@ -1,5 +1,5 @@
 Syn::Application.routes.draw do
-  get "main_pages/home"
+  root to: "main_pages#home"
 
   get "main_pages/help"
 
