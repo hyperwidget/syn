@@ -1,6 +1,15 @@
 Syn::Application.routes.draw do
 
+  resources :posts
+
+  resources :tags
+
+  resources :categories
+
   root to: "main_pages#home"
+  match "/about" => "main_pages#about"
+  match "/contact" => "main_pages#contact"
+  match "/help" => "main_pages#help"
 
   get "main_pages/contact"
   get "main_pages/help"
