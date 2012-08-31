@@ -21,7 +21,10 @@ module ApplicationHelper
 
 	def getFirstDate
 		Post.find(1).datePosted
+	end
 
+	def getFirstCat
+		Category.find(Post.find(3).category_id).name
 	end
 
 	def getFirstBody
