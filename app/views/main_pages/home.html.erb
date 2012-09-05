@@ -1,50 +1,23 @@
 <% provide(:title, 'Home') %>
 
 <div class="center hero-unit">
-				<h3><%= getFirstTitle %></h3>
-				<div id = 'prePost'> Author : Hunter Jansen - Posted on : <%= getFirstDate %> Category - <%=getFirstCat%></div>
-				<br/>
+	<% postCount = 1 %>
+	<% lastFive = getLastFive %>
+	<% lastFive.each do |enum| %>
+		<% if validPost enum %>
+			<h1><%= getTitle enum %></h1>
+			<div id = 'prePost'> Author : Hunter Jansen - Posted on : <%= getDate enum %> Category - <%= getCat enum %></div>
+			<br/>
+			<%= getBody enum %>
+			<br/><br/>
+			<div id = 'tags'>Tags : 
+				<% tags  = getTags enum %>
+				<% tags.each do |tag| %>
+				<%= link_to tag.name, "tags/#{tag.id}" %>
+				<% end %>
+			</div><br/>
+		<% end %>
 
-				<%= getFirstBody %>
-
-				<br/><br/>
-
-				<div id = 'tags'>Tags : <%= getFirstTags %></div><br/>
-
-				<h3>This is what a post title would look like</h3>
-				<div id = 'prePost'> Author :  Name - Posted on : Date&time </div>
-				<br/>
-
-				Lots and lots of content - like for serious, silly amounts of content and stuff - I can't even handle all the srsnz that this post contains - I'm pretty sure you're learning all sorts of cool information just by reading
-				this little bit of text that I've put down on the page. I hope you reblog this and ping me back and tweet about this and tell all your friends. For srz.<br/><br/>
-
-				<div id = 'tags'>Tags : Making tags, Another Tags, Different Tags, Oh gee another tag</div><br/>
-
-				<h3>This is what a post title would look like</h3>
-				<div id = 'prePost'> Author :  Name - Posted on : Date&time </div>
-				<br/>
-
-				Lots and lots of content - like for serious, silly amounts of content and stuff - I can't even handle all the srsnz that this post contains - I'm pretty sure you're learning all sorts of cool information just by reading
-				this little bit of text that I've put down on the page. I hope you reblog this and ping me back and tweet about this and tell all your friends. For srz.<br/><br/>
-
-				<div id = 'tags'>Tags : Making tags, Another Tags, Different Tags, Oh gee another tag</div><br/>
-
-				<h3>This is what a post title would look like</h3>
-				<div id = 'prePost'> Author :  Name - Posted on : Date&time </div>
-				<br/>
-
-				Lots and lots of content - like for serious, silly amounts of content and stuff - I can't even handle all the srsnz that this post contains - I'm pretty sure you're learning all sorts of cool information just by reading
-				this little bit of text that I've put down on the page. I hope you reblog this and ping me back and tweet about this and tell all your friends. For srz.<br/><br/>
-
-				<div id = 'tags'>Tags : Making tags, Another Tags, Different Tags, Oh gee another tag</div><br/>
-
-				<h3>This is what a post title would look like</h3>
-				<div id = 'prePost'> Author :  Name - Posted on : Date&time </div>
-				<br/>
-
-				Lots and lots of content - like for serious, silly amounts of content and stuff - I can't even handle all the srsnz that this post contains - I'm pretty sure you're learning all sorts of cool information just by reading
-				this little bit of text that I've put down on the page. I hope you reblog this and ping me back and tweet about this and tell all your friends. For srz.<br/><br/>
-
-				<div id = 'tags'>Tags : Making tags, Another Tags, Different Tags, Oh gee another tag</div><br/>
+	<% end %>
 
 </div>

@@ -15,23 +15,38 @@ module ApplicationHelper
 		image_tag(gravatar_url, :alt=> "Hunter Jansen", :class=> "gravatar")
 	end
 
-	def getFirstTitle
-		link_to Post.find(1).title, "posts/1"
+	def getTitle(enum)
+			link_to Post.find(enum).title, "posts/#{enum}"
 	end
 
-	def getFirstDate
-		Post.find(1).datePosted
+	def getDate enum
+			Post.find(enum).datePosted
 	end
 
-	def getFirstCat
-		Category.find(Post.find(3).category_id).name
+	def getCat enum
+			Category.find(Post.find(3).category_id).name
 	end
 
-	def getFirstBody
-		Post.find(1).body	
+	def getBody enum
+			Post.find(enum).body
 	end
 
-	def getFirstTags
-		Post.find(1).tags.map { |tag| tag.name  }
+	def getTags enum
+			Post.find(enum).tags(:select => :name)
 	end
+
+	def getPost enum
+			Post.find(enum)
+	end
+
+	def validPost enum
+		if enum <= Post.count
+			return true
+		end
+	end
+
+	def getLastFive
+		Post.find(:all, :order => "id desc", :select=>:id, :limit => 5).collect(&:id)
+	end
+
 end
