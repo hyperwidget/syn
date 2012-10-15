@@ -6,6 +6,7 @@ gem 'bootstrap-sass', '2.0.4.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'capistrano'
 gem 'rb-readline'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'sqlite3'
