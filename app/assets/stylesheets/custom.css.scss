@@ -5,8 +5,7 @@
 	width: 100%;
 	height: 45px;
 	color: #FFF;
-	background-color: #444;
-	border-bottom: 1px solid #eaeaea;
+	border-bottom: 1px solid #d9f966;
 }
 
 header{
@@ -25,8 +24,12 @@ header a:link {
 }    
 
 header a:visited {color: #FFF;}  
-header a:hover {color: #DFF;} 
-header a:active {color: #EEE;} 
+header a:hover {color: #d9f966; background-color: transparent} 
+
+.logo{
+	height : 45px;
+	weight : 45px;
+}
 
 .title{
 	letter-spacing: 0em;
@@ -66,7 +69,7 @@ header a:active {color: #EEE;}
 }  
 
 .menu a:visited {color: #BBB;}  
-.menu a:hover {color: #DFF;} 
+.menu a:hover {color: #d9f966; background-color: transparent} 
 .menu a:active {color: #BBB;}  
 
 nav{
@@ -74,9 +77,10 @@ nav{
 	display: inline;
 }
 
+/* CONSTANTS */
 body{
 	font-family: Century Gothic, sans-serif;
-	background-color: #ADF;
+	background-color: #231F20;
 	width: 900px;
 	margin: 0 auto;
 }
@@ -88,9 +92,11 @@ body{
 	width: 835px;
 	bottom: 70px;
 	background-color: white;
-	box-shadow: 3px 3px 5px 6px #777;
+	box-shadow: 1px 1px 2px 2px #AAA;
 	overflow: auto;
 }
+
+#main a:hover{color: #6f8036; background-color: transparent}
 
 #prePost{
 	font-size: .7em;
@@ -104,7 +110,7 @@ body{
 #contactBox{
 	position: relative;
 	background-color: white;
-	box-shadow: 3px 3px 5px 6px #777;
+	box-shadow: 1px 1px 2px 2px #AAA;
 	width: 200px;
 	bottom: 0px;
 	top: 60px;
@@ -116,13 +122,18 @@ body{
 #secondBox{
 	position: relative;
 	background-color: white;
-	box-shadow: 3px 3px 5px 6px #777;
+	box-shadow: 1px 1px 2px 2px #AAA;
 	width: 200px;
 	bottom: 0px;
 	top: 90px;
 	padding: 10px 30px;
 	left: 910px;
-	height: 150px;
+}
+
+/* posts */
+
+.postTitle{
+	
 }
 
 
@@ -135,8 +146,7 @@ body{
 	height: 50px;
 	width: 100%;
 	color: #FFF;
-	background-color: #444;
-	border-top: 1px solid #eaeaea;
+	border-top: 1px solid #d9f966;
 	padding-top: 5px;
 }
 

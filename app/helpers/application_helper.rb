@@ -27,8 +27,12 @@ module ApplicationHelper
 			Category.find(Post.find(3).category_id).name
 	end
 
+	def getIntro enum
+			Post.find(enum).body.split("--endIntro").first.html_safe
+	end
+
 	def getBody enum
-			Post.find(enum).body
+			Post.find(enum).body.html_safe
 	end
 
 	def getTags enum

@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
+<h1>
   <%= @post.title %>
-</p>
+</h1>
 
 <p>
   <b>Dateposted:</b>
@@ -11,8 +10,8 @@
 </p>
 
 <p>
-  <b>Body:</b>
-  <%= @post.body %>
+  <%= @post.body.split("--endIntro").first.html_safe %>
+  <%= @post.body.split("--endIntro").last.html_safe %>
 </p>
 
 

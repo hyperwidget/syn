@@ -8,8 +8,11 @@
 			<h1><%= getTitle enum %></h1>
 			<div id = 'prePost'> Author : Hunter Jansen - Posted on : <%= getDate enum %> Category - <%= getCat enum %></div>
 			<br/>
-			<%= getBody enum %>
-			<br/><br/>
+			<%= getIntro enum %>
+			<br/>
+			<%= link_to "Continue Reading", "posts/#{enum}" %>
+			<br/>
+			<br/>
 			<div id = 'tags'>Tags : 
 				<% tags  = getTags enum %>
 				<% tags.each do |tag| %>
