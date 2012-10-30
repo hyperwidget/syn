@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 	def full_title(page_title)
-		base_title = "syntaxSymposium"
+		base_title = "Calmly Coding"
 		if page_title.empty?
 			base_title
 		else
@@ -53,4 +53,12 @@ module ApplicationHelper
 		Post.find(:all, :order => "id desc", :select=>:id, :limit => 5).collect(&:id)
 	end
 
+	def getPosts page
+		if page == 0 or page == 1					
+			Post.find(:all, :order => "id desc", :select=>:id, :limit => 5).collect(&:id)
+		else
+			page = (Integer(page)-1)*5
+			Post.find(:all, :order => "id desc", :select=>:id, :limit => 5, :offset => page ).collect(&:id)
+		end
+	end
 end

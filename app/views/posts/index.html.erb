@@ -1,28 +1,24 @@
-<h1>Listing posts</h1>
+<h1>Search Results</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Dateposted</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <% if @posts.count == 0 %>
+    <h3>No posts match your search results</h3>
+    <% else %>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %></td>
-    <td><%= post.datePosted %></td>
-    <td><%= post.body %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
+  <% @posts.each do |enum| %>
+    <h1><%= getTitle enum %></h1>
+      <div id = 'prePost'> Author : Hunter Jansen - Posted on : <%= getDate enum %> Category - <%= getCat enum %></div>
+      <br/>
+      <%= getIntro enum %>
+      <br/>
+      <%= link_to "Continue Reading", "posts/#{enum}" %>
+      <br/>
+      <br/>
+      <div id = 'tags'>Tags : 
+        <% tags  = getTags enum %>
+        <% tags.each do |tag| %>
+        <%= link_to tag.name, "tags/#{tag.id}" %>
+        <% end %>
+      </div><br/>
+    <% end %>
+    <% end %>
 <br />
-<!--
-<%= link_to 'New Post', new_post_path %>
--->

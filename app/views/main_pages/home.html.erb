@@ -1,9 +1,16 @@
 <% provide(:title, 'Home') %>
-
+<% if params[:page]  %>
+ <%  page = Integer(params[:page]) %>
+ <%  else %>
+  <% 	page = Integer(0) %>
+  <% 	end %>
 <div class="center hero-unit">
 	<% postCount = 1 %>
-	<% lastFive = getLastFive %>
-	<% lastFive.each do |enum| %>
+	<% posts = getPosts page %>
+	<span>
+	<%= link_to " OLDER", root_url(:page=> page==0 ? 2 : page + 1 ) %></span>
+	<%= link_to " NEWER", root_url(:page=> page<=1 ? 1 : page - 1 ) %></span>
+	<% posts.each do |enum| %>
 		<% if validPost enum %>
 			<h1><%= getTitle enum %></h1>
 			<div id = 'prePost'> Author : Hunter Jansen - Posted on : <%= getDate enum %> Category - <%= getCat enum %></div>
@@ -20,7 +27,8 @@
 				<% end %>
 			</div><br/>
 		<% end %>
-
 	<% end %>
-
+	<span>
+	<%= link_to " OLDER", root_url(:page=> page==0 ? 2 : page + 1 ) %></span>
+	<%= link_to " NEWER", root_url(:page=> page<=1 ? 1 : page - 1 ) %></span>
 </div>

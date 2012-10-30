@@ -47,7 +47,6 @@ header a:hover {color: #d9f966; background-color: transparent}
 	list-style-type: none;
 	float: right;
 	margin-right: 10px;
-	margin-top: 10px;
 }
 
 .menu li{	
@@ -113,7 +112,7 @@ body{
 	box-shadow: 1px 1px 2px 2px #AAA;
 	width: 200px;
 	bottom: 0px;
-	top: 60px;
+	top: 100px;
 	padding: 10px 30px;
 	left: 910px;
 	height: 300px;
@@ -125,7 +124,18 @@ body{
 	box-shadow: 1px 1px 2px 2px #AAA;
 	width: 200px;
 	bottom: 0px;
-	top: 90px;
+	top: 120px;
+	padding: 10px 30px;
+	left: 910px;
+}
+
+#searchBox{
+	position: relative;
+	background-color: white;
+	box-shadow: 1px 1px 2px 2px #AAA;
+	width: 200px;
+	bottom: 0px;
+	top: 60px;
 	padding: 10px 30px;
 	left: 910px;
 }
