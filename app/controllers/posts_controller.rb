@@ -24,7 +24,8 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    #@post = Post.new
+    @post = Post.new
+    @tags = Tag.pluck(:name);
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +36,13 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    @tags = Tag.pluck(:name);
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    #@post = Post.new(params[:post])
+    @post = Post.new(params[:post])
 
     respond_to do |format|
       if @post.save
@@ -56,7 +58,7 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-    #@post = Post.find(params[:id])
+    @post = Post.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -66,6 +68,27 @@ class PostsController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def delete_tag
+    @post = Post.find(params[:post])
+    @tag = Tag.find(params[:tag])
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def addTag
+    @post = Post.find(params[:post_id])
+    @tag = Tag.find_by_name(params[:tags])
+
+    if @post.tags.include? @tag
+      redirect_to edit_post_path(@post), flash: { error: 'Tag already attached to post'}
+    else
+      @post.tags << @tag
+      redirect_to @post, flash: {notice: 'Tag successfully added to post' }     
     end
   end
 

@@ -16,7 +16,7 @@ module ApplicationHelper
 	end
 
 	def getTitle(enum)
-			link_to Post.find(enum).title, "posts/#{enum}"
+			link_to Post.find(enum).title, Post.find(enum)
 	end
 
 	def getDate enum
@@ -61,4 +61,9 @@ module ApplicationHelper
 			Post.find(:all, :order => "id desc", :select=>:id, :limit => 5, :offset => page ).collect(&:id)
 		end
 	end
+
+	def getMaxPage
+		(Post.count / 5) + 1
+	end
+
 end

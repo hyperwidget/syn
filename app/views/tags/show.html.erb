@@ -1,9 +1,35 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+      <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:error] %>
+      <p class="error"><%= flash[:error] %></p>
+    <% end %>
 
 <p>
-  <b>Name:</b>
-  <%= @tag.name %>
+  Showing all posts tagged with : <%= @tag.name %>
 </p>
+
+  <% if @posts.count == 0 %>
+    <h3>No posts match your search results</h3>
+    <% else %>
+
+  <% @posts.each do |enum| %>
+    <h1><%= getTitle enum %></h1>
+      <div id = 'prePost'> Author : Hunter Jansen - Posted on : <%= getDate enum %> Category - <%= getCat enum %></div>
+      <br/>
+      <%= getIntro enum %>
+      <br/>
+      <%= link_to "Continue Reading", "posts/#{enum}" %>
+      <br/>
+      <br/>
+      <div id = 'tags'>Tags : 
+        <% tags  = getTags enum %>
+        <% tags.each do |tag| %>
+        <%= link_to tag.name, tag %>
+        <% end %>
+      </div><br/>
+    <% end %>
+    <% end %>
 
 <!--
 <%= link_to 'Edit', edit_tag_path(@tag) %> |

@@ -1,15 +1,27 @@
 <% provide(:title, 'Home') %>
 <% if params[:page]  %>
- <%  page = Integer(params[:page]) %>
- <%  else %>
-  <% 	page = Integer(0) %>
-  <% 	end %>
+	<% page = Integer(params[:page]) %>
+<% else %>
+  <% page = Integer(0) %>
+<% end %>
+<% maxPage = getMaxPage %>
 <div class="center hero-unit">
 	<% postCount = 1 %>
 	<% posts = getPosts page %>
 	<span>
-	<%= link_to " OLDER", root_url(:page=> page==0 ? 2 : page + 1 ) %></span>
-	<%= link_to " NEWER", root_url(:page=> page<=1 ? 1 : page - 1 ) %></span>
+	<div id = 'topNav'>
+		<% if page > 1 %>
+			<span class = 'leftFloat'>
+				<%= link_to " << NEWER", root_url(:page=> page<=1 ? 1 : page - 1 ) %>
+			</span>
+		<% end %>
+		<% if page < maxPage %>
+	 		<span class = 'rightFloat'>
+				<%= link_to " OLDER >>", root_url(:page=> page==0 ? 2 : page + 1 ) %>
+			</span>
+		<% end %>
+	</div>
+	<br/>
 	<% posts.each do |enum| %>
 		<% if validPost enum %>
 			<h1><%= getTitle enum %></h1>
@@ -28,7 +40,12 @@
 			</div><br/>
 		<% end %>
 	<% end %>
-	<span>
-	<%= link_to " OLDER", root_url(:page=> page==0 ? 2 : page + 1 ) %></span>
-	<%= link_to " NEWER", root_url(:page=> page<=1 ? 1 : page - 1 ) %></span>
+	<div id = 'bottomNav'>
+		<span class = 'leftFloat'>
+			<%= link_to " << NEWER", root_url(:page=> page<=1 ? 1 : page - 1 ) %>
+		</span>
+		<span class = 'rightFloat'>
+			<%= link_to " OLDER >>", root_url(:page=> page==0 ? 2 : page + 1 ) %>
+		</span>
+	</div>
 </div>

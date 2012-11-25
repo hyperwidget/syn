@@ -1,7 +1,45 @@
+<script type ="text/javascript">
+$(document).ready(function() {
+   if ($('textarea').length > 0) {       
+     var data = $('textarea');
+     $.each(data, function(i) {
+       CKEDITOR.replace(data[i].id);
+     });     
+   }  
+});
+</script>
+
+<% if flash[:notice] %>
+      <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:error] %>
+      <p class="error"><%= flash[:error] %></p>
+    <% end %>
+
 <h1>Editing post</h1>
 
-
 <!--<%= render 'form' %> -->
+<%= form_for(@post) do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	
+	<br/>
+	<%= f.text_area :body %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %> 
+	<br/>
+	<%= f.submit "Post", :class=>"btn btn-large btn-primary" %>
+<% end %> 
+
+<span class = 'tagSelectArea'>
+	<%= form_tag("/addTag", :method => "post") do %>
+		<%= select_tag 'tags', options_for_select(@tags.to_a) %>
+		<%= hidden_field_tag :post_id, @post.id %>
+		<%= submit_tag "Add Tag" %>
+	<% end %>
+</span>
+
+<%= render 'post_tags' %>
+<%= render 'popular_tags' %>
+
+<!--<%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %> -->

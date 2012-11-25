@@ -1,0 +1,6 @@
+<fieldset class = 'tagsBox'>
+	<legend>Existing Tags</legend>
+	<% @post.tags.each do | t | %>
+		<%= link_to t.name,  remote: true %>
+	<% end %>
+</fieldset>

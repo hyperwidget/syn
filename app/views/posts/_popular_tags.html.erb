@@ -1,0 +1,4 @@
+<fieldset class = 'tagsBox'>
+	<legend>Popular Tags</legend>
+	<%= @post.tags.pluck(:name).join(', ') %>
+</fieldset>

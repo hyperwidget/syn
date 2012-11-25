@@ -10,6 +10,7 @@ Syn::Application.routes.draw do
   match "/about" => "main_pages#about"
   match "/contact" => "main_pages#contact"
   match "/help" => "main_pages#help"
+  match "/addTag" => "posts#addTag"
 
   get "main_pages/contact"
   get "main_pages/help"

@@ -1,23 +1,30 @@
+<script type ="text/javascript">
+$(document).ready(function() {
+   if ($('textarea').length > 0) {       
+     var data = $('textarea');
+     $.each(data, function(i) {
+       CKEDITOR.replace(data[i].id);
+     });     
+   }  
+});
+</script>
 <h1>New post</h1>
 
-<!--
-<%= render 'form' %>
--->
 
-<!--
+<!--<%= render 'form' %> -->
+
 <%= form_for(@post) do |f| %>
 	<%= f.label :title %>
 	<%= f.text_field :title %>
+	
 	<br/>
-	<%= f.label :datePosted %>
-	<%= f.text_field :datePosted %>
-
-	<br/>
-	<%= f.label :body %>
-	<%= f.text_area :body, :rows=>12, :cols=>40 %>
+	<%= f.text_area :body %>
 
 	<br/>
 	<%= f.submit "Post", :class=>"btn btn-large btn-primary" %>
-<% end %> -->
+<% end %> 
 
-<%= link_to 'Back', posts_path %>
+<%= select_tag 'tags', options_for_select(@tags.to_a) %>
+<% @post.tags.each do |t| %>
+	<%= t.name %>
+<% end %>
