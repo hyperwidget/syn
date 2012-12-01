@@ -78,6 +78,7 @@ GEM
       thor (~> 0.14)
     jruby-pageant (1.1.1)
     json (1.7.5)
+    libv8 (3.3.10.4)
     libwebsocket (0.1.5)
       addressable
     mail (2.4.4)
@@ -97,8 +98,6 @@ GEM
     newrelic_rpm (3.5.0)
     nokogiri (1.5.5)
     nokogiri (1.5.5-x86-mingw32)
-    pg (0.12.2)
-    pg (0.12.2-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -182,11 +181,12 @@ DEPENDENCIES
   execjs
   factory_girl_rails (= 1.4.0)
   jquery-rails
+  libv8 (= 3.3.10.4)
   newrelic_rpm
-  pg (= 0.12.2)
   rails (= 3.2.6)
   rb-readline
   rspec-rails (= 2.10.0)
   sass-rails (= 3.2.4)
   sqlite3
+  therubyracer
   uglifier (= 1.2.3)

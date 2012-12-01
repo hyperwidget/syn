@@ -8,6 +8,8 @@ gem 'capistrano'
 gem 'rb-readline'
 gem 'newrelic_rpm'
 gem 'execjs'
+gem 'therubyracer', :platform => :ruby
+gem 'libv8', '3.3.10.4'
 
 group :development, :test do
   gem 'sqlite3'
@@ -31,5 +33,5 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.12.2'
+  #gem 'pg', '0.12.2'
 end
