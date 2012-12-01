@@ -7,6 +7,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'capistrano'
 gem 'rb-readline'
 gem 'newrelic_rpm'
+gem 'execjs'
 
 group :development, :test do
   gem 'sqlite3'
