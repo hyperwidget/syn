@@ -1,0 +1,21 @@
+<h1>Listing posts_tags</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @posts_tags.each do |posts_tag| %>
+  <tr>
+    <td><%= link_to 'Show', posts_tag %></td>
+    <td><%= link_to 'Edit', edit_posts_tag_path(posts_tag) %></td>
+    <td><%= link_to 'Destroy', posts_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Posts tag', new_posts_tag_path %>

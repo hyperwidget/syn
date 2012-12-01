@@ -36,7 +36,12 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
-    @tags = Tag.pluck(:name);
+    @tags = Tag.pluck(:name)
+    @popular = []
+    postsTag = PostsTag.group('tag_id').count().to_a.sort{|a| a[0]}.sort!{|a,b| a[1]<=> b[1]}.reverse
+    postsTag.each do |pt | 
+      @popular.push(Tag.find(pt[0]))
+    end
   end
 
   # POST /posts
@@ -83,6 +88,10 @@ class PostsController < ApplicationController
   def addTag
     @post = Post.find(params[:post_id])
     @tag = Tag.find_by_name(params[:tags])
+
+    respond_to do |format|
+      format.js
+    end
 
     if @post.tags.include? @tag
       redirect_to edit_post_path(@post), flash: { error: 'Tag already attached to post'}

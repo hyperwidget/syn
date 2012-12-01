@@ -1,6 +1,10 @@
 Syn::Application.routes.draw do
 
-  resources :posts
+  resources :posts_tags do
+    put :add_tag_to_post, on: :collection
+  end
+
+  resources :posts 
 
   resources :tags
 
@@ -10,7 +14,7 @@ Syn::Application.routes.draw do
   match "/about" => "main_pages#about"
   match "/contact" => "main_pages#contact"
   match "/help" => "main_pages#help"
-  match "/addTag" => "posts#addTag"
+  match "/addTag" => "posts_tags#create"
 
   get "main_pages/contact"
   get "main_pages/help"

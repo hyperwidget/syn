@@ -1,4 +1,9 @@
 <fieldset class = 'tagsBox'>
 	<legend>Popular Tags</legend>
-	<%= @post.tags.pluck(:name).join(', ') %>
+	<% @popular.each do | pt | %>
+	<% stuff = [] %>
+	<% stuff.push(@post.id) %>
+	<% stuff.push(pt.name) %>
+	<%= link_to pt.name, add_tag_to_post_posts_tags_path(@stuff), remote: true  %>
+	<% end %>
 </fieldset>
